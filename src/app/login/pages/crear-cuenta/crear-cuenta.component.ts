@@ -18,7 +18,8 @@ export class CrearCuentaComponent implements OnInit {
   constructor(private loginService:LoginService, private fb:FormBuilder,private router:Router){
 
     //AGREGAR LA CLAVE DEL SITIO WEB
-    this.siteKey='6LemslUpAAAAAEueFQzVEyh5N-ws8Eqp_Ncv1inx';
+    
+    this.siteKey='6Ld9vlUpAAAAAIBxg_WAyAL3v782D0Sv_HefWBjy';
     
   }
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";

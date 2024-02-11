@@ -14,18 +14,18 @@ export class CrearCuentaComponent implements OnInit {
 
   //DEFINIR VARIABLE
   siteKey:string;
-  
+
   constructor(private loginService:LoginService, private fb:FormBuilder,private router:Router){
 
     //AGREGAR LA CLAVE DEL SITIO WEB
-    
+
     this.siteKey='6Ld9vlUpAAAAAIBxg_WAyAL3v782D0Sv_HefWBjy';
-    
+
   }
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
   myForm:FormGroup = this.fb.group({
-    
+
     nombre:['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\s]*$/)]],
     apellidop:['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]*$/)]],
     apellidom:['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]*$/)]],
@@ -41,10 +41,10 @@ export class CrearCuentaComponent implements OnInit {
   }, {
     validators: [
       this.isFieldOneEqualFieldTwo('password','password2')
-      
+
     ]
   })
-  
+
 
   public isFieldOneEqualFieldTwo( field1: string, field2: string ) {
 
@@ -79,7 +79,7 @@ export class CrearCuentaComponent implements OnInit {
         return { 'underage': 'La persona debe ser mayor de 18 años' };
     }
 
-    return null;  
+    return null;
 }
 
 
@@ -93,7 +93,7 @@ console.log(this.myForm.value);
         console.log(data)
       // Muestra un mensaje de éxito con diseño Bootstrap
       this.showAlert('Cuenta creada correctamente', 'alert-success');
-      
+
       // Redirige al usuario a la página de inicio después de un breve tiempo
       setTimeout(() => {
         this.router.navigate(['/inicio']);
@@ -124,11 +124,15 @@ showAlert(message: string, alertClass: string) {
   }, 5000);
 }
 
-
-
+activarBtnCrear(event:string){
+  if(this.myForm.invalid)
+  return true;
+else
+return false;
+}
 
   ngOnInit(){
-    
-  
+
+
   }
 }

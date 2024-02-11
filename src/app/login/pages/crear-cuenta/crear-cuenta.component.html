@@ -288,9 +288,9 @@
 
       </div>
       <!-- CAPTCHA -->
-      <ngx-recaptcha2 (success)="activarBtnCrear($event)" class="captcha" #captchaElem [siteKey]="siteKey"></ngx-recaptcha2>
+      <ngx-recaptcha2 (success)="activarBtnCapcha($event)" class="captcha" #captchaElem [siteKey]="siteKey"></ngx-recaptcha2>
       <p class="text-center mb-3">¿Ya tienes una cuenta? <a href="#" routerLink="/Login">Iniciar sesión</a></p>
 
-      <button [disabled]="false" type="submit">Crear cuenta</button>
+      <button [disabled]="activarBtnCrear()" type="submit">Crear cuenta</button>
 
     </form>

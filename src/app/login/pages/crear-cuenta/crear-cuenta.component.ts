@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CrearCuentaComponent implements OnInit {
   logosinfondo:string="assets/images/logosinfondo.png"
-
+  capchaValid:boolean = true;
   //DEFINIR VARIABLE
   siteKey:string;
 
@@ -124,11 +124,17 @@ showAlert(message: string, alertClass: string) {
   }, 5000);
 }
 
-activarBtnCrear(event:string){
-  if(this.myForm.invalid)
-  return true;
-else
-return false;
+activarBtnCapcha(event:string){
+  this.capchaValid = false;
+}
+activarBtnCrear(){
+  if(this.myForm.invalid === false && this.capchaValid === false){
+    console.log("3:", this.myForm.invalid, this.capchaValid)
+    return false
+  }
+  else{
+    return true
+  }
 }
 
   ngOnInit(){

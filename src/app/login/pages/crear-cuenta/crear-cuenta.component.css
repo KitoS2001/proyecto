@@ -44,6 +44,60 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }
+.checkboxE {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilos para el checkbox */
+.checkboxE input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Estilos para el marcador del checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+/* Cambia el color del marcador cuando el checkbox está marcado */
+.checkboxE input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Estilos para la marca de verificación dentro del marcador */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Mostrar la marca de verificación cuando el checkbox está marcado */
+.checkboxE input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Estilos para la marca de verificación (la "✓") */
+.checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
 
 .form-container {
   border: 2px solid #ffffff;
@@ -186,6 +240,10 @@ input {
 
 
 
+
+
+
+
 /* Agrega esta sección para estilos del botón */
 button:active {
   background-color: #2e2be0;
@@ -199,14 +257,18 @@ button:active {
   font-size: 18px;
   margin-top: 10px;
 }
+.navbar {
+  background-color: #1367c2;
+  padding: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
 
-
-
-
-/*  .logo {
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff; /* Fondo blanco */
+.navbar a {
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  
+}

@@ -19,4 +19,15 @@ export class ServiciosComponent {
   extraccion: string="assets/images/extraccion.jpg";
   limpieza: string="assets/images/limpieza.jpg";
 
+  imagenSeleccionada: boolean = false;
+
+  
+  seleccionarImagen() {
+    this.imagenSeleccionada = true;
+  }
+  
+  deseleccionarImagen() {
+    this.imagenSeleccionada = false;
+  }
+  
 }

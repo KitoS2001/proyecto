@@ -5,6 +5,8 @@ import { RecuperarPasswordComponent } from './pages/recuperar-password/recuperar
 import { LayoutComponent } from './pages/layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { AgendarComponent } from './pages/agendar/agendar.component';
+
 import { HeaderComponent } from './interfaces/header/header.component';
 import { FooterComponent } from './interfaces/footer/footer.component';
 import { ContactoComponent } from './interfaces/contacto/contacto.component';
@@ -17,6 +19,10 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
       {
         path: 'inicio',
         component: InicioComponent
@@ -41,10 +47,7 @@ const routes: Routes = [
         path: 'ubicacion',
         component: UbicacionComponent
       },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
+      
       {
         path: 'crear-cuenta',
         component: CrearCuentaComponent
@@ -58,8 +61,12 @@ const routes: Routes = [
         component: QuienessomosComponent
       },
       {
+      path: 'agendar',
+      component: AgendarComponent
+    },
+      {
         path: '**',
-        redirectTo: 'inicio'
+        redirectTo: 'login'
 
       }
     ]

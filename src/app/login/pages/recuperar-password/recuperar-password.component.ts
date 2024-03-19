@@ -11,7 +11,7 @@ import { Email, Password } from '../../interfaces/user.interface';
 })
 export class RecuperarPasswordComponent {
   constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) { }
-  logoblanco:string="assets/images/logoblanco.png"
+  logosinfondo:string="assets/images/logosinfondo.png"
   
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   validStatus:boolean = false;
@@ -76,6 +76,17 @@ export class RecuperarPasswordComponent {
     }
   }
 
+
+  togglePassword(fieldId: string) {
+    const field = document.getElementById(fieldId) as HTMLInputElement;
+    if (field.type === "password") {
+      field.type = "text";
+    } else {
+      field.type = "password";
+    }
+  }
+
+  
   updatePassword(){
     if(this.passwordForm.invalid)
       return

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,9 @@
 
 <body>
 
-
-     
-<!-- src/app/app.component.html -->
+  
+  
+ <app-header></app-header>
 
 
 <div style="text-align: center; margin-top: 50px;">
@@ -21,7 +22,7 @@
   
     <div style="display: flex; justify-content: space-between; margin: 0 50px;">
   
-      <div style="width: 40%;">
+      <div style="width: 30%;">
         <img src="assets/images/somos.jpg" alt="logo" style="width: 100%;">
       </div>
   
@@ -43,12 +44,72 @@
   
     </div>
   <br>
+
+
+ 
+  
+  <body>
+    <div class="container">
+    <div class="card-container">
+      <div class="card" (click)="toggleMission()">
+          <div class="front-content">
+              <p>Misión</p>
+          </div>
+          <div class="content" [hidden]="!showMission">
+            <p class="letras">
+                Somos una clínica odontológica que se dedica a mejorar la calidad de vida de nuestros pacientes,
+                proporcionando diagnósticos y tratamientos óptimos. 
+                Además, promovemos activamente la cultura de la salud bucodental, enfocándonos en la prevención 
+                y educación para fomentar un mayor cuidado oral en la sociedad.
+            </p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card-container">
+    <div class="card" (click)="toggleMission()">
+        <div class="front-content">
+            <p>Visión</p>
+        </div>
+        <div class="content" [hidden]="!showMission">
+          <p class="letras">
+            Trascender como líderes en el ámbito odontológico, siendo reconocidos por nuestra 
+            dedicación a la excelencia y la satisfacción del paciente. Visualizamos 
+            un futuro en el que Dental Crown sea sinónimo de confianza y calidad en servicios dentales.
+          </p>
+      </div>
+    </div>
+</div>
+</div>
+
+
+
+ <!-- Video añadir controls-->
+ <video id="video" src="assets/images/video.mp4" onclick="togglePlayPause()"></video>
+
+ <!-- Botones de reproducción y pausa -->
+ <div>
+   <button (click)="play()" style="font-size: 40px; border: none; background: none;">▶️</button>
+   <button (click)="pause()" style="font-size: 40px; border: none; background: none;">⏸️</button>
+ </div>
+ 
+
+
+
+    
+    
+    
+  
+ 
+  
     <h2>Equipo Médico</h2>
   
     <div style="display: flex; justify-content: space-around; margin: 20px 50px;">
       <div class="doctor-info">
         <div class="circle">
-          <img src="assets/images/imagesDoctores/doctora1.jpg" alt="Doctor 1" class="doctor-image">
+          <img src="assets/images/imagesDoctores/doctora1.jpg" alt="Doctor 1" class="doctor-image" (touchstart)="handleTouchStart()" [style.width.px]="imageSize" [style.height.px]="imageSize">
         </div>
         <h3>Dr. Nombre 1</h3>
         <p>Descripción breve del Dr. Nombre 1.</p>
@@ -70,11 +131,12 @@
         <p>Descripción breve del Dr. Nombre 3.</p>
       </div>
     </div>
-  </div>
+  
   
   
 </body>
+<app-footer></app-footer>
 
 
 
-</html>
+

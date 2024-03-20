@@ -299,6 +299,10 @@
       *ngIf="myForm.get('respuesta')?.hasError('required') && myForm.get('respuesta')?.touched">
       <i class="fas fa-exclamation-circle"></i>El campo es obligatorio.
     </div>
+    <div class="error-message text-danger"
+              *ngIf="myForm.get('respuesta')?.hasError('pattern') && myForm.get('respuesta')?.touched">
+              <i class="fas fa-exclamation-circle"></i>La respuesta no debe contener números.
+            </div>
   </div>
 </div>
 
@@ -354,19 +358,7 @@
       </div>
 
       
-      
-      <div class="form-row">
-        <label class="checkboxE"> 
-            <a [routerLink]="['/TerminosCondiciones']" routerLinkActive="active-link">
-                Acepto los términos y condiciones
-            </a>
-            <input type="checkbox" formControlName="terminosYCondiciones">
-            <span class="checkmark"></span>
-        </label>
-    </div>
-    <div class="error-message text-danger" *ngIf="myForm.get('terminosYCondiciones')?.invalid && myForm.get('terminosYCondiciones')?.touched">
-        <i class="fas fa-exclamation-circle"></i> Debes aceptar los términos y condiciones.
-    </div>
+   
     
       
 

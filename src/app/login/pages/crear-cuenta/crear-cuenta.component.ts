@@ -39,7 +39,6 @@ export class CrearCuentaComponent implements OnInit {
     telefono: ['', [Validators.pattern(/^\d{10}$/), Validators.required]],
     pregunta: ['', [Validators.required]],
     respuesta: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/)]],
-    terminos: ['', [Validators.required]],
 
 
     /*recaptcha: ['', Validators.required]*/

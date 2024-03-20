@@ -15,7 +15,12 @@ export class RecuperarPasswordComponent {
   
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   validStatus:boolean = false;
-  validForms:boolean = false
+  validForms:boolean = false;
+
+  validFormularios:boolean = false;
+  metodoSeleccionado = false;
+  tipo = true;
+
   code!:string;
   id!:number;
   sending: boolean = false; // Variable para controlar el estado de envío
@@ -23,6 +28,12 @@ export class RecuperarPasswordComponent {
   myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
   })
+
+  preForm: FormGroup = this.fb.group({
+    pregunta: ['', [Validators.required]],
+    respuesta: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/)]],
+  })
+
   codeForm: FormGroup = this.fb.group({
     code: ['', [Validators.required, Validators.min(10)]],
   })
@@ -75,6 +86,9 @@ export class RecuperarPasswordComponent {
       this.validForms = true;
     }
   }
+
+
+  
 
 
   togglePassword(fieldId: string) {

@@ -1,15 +1,12 @@
-<!DOCTYPE html>
 <div class="navbar">
   <a routerLink="/Login">Iniciar Sesión</a>
   <a routerLink="/Registro">Crear Cuenta</a>
 </div>
+<br>
 
-<html lang="en">
-<head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-</head>
-<body>
+
 <!--FORMULARIO REGISTRO-->
 <div class="container">
   <div class="form-container">
@@ -251,60 +248,62 @@
         </div>
       </div>
 
- <!-- PREGUNTA Y RESPUESTA -->
 
- <div class="form-row">
-  <div class="form-group col-md-6">
-    <!-- PREGUNTA -->
-    <label for="">Pregunta:</label>
-    <div class="input-group">
-      <select formControlName="pregunta" class="form-control" id="campoPregunta" (change)="mostrarSeleccion($event)">
-        <option value="" disabled selected>Selecciona</option>
-        <option value="¿Nombre de tu perro?">¿Nombre de tu perro?</option>
-        <option value="¿Nombre de tu gato?">¿Nombre de tu gato?</option>
-        <option value="¿Videojuego favorito?">¿Videojuego favorito?</option>
-        <option value="¿Comida favorita?">¿Comida favorita?</option>
-      </select>
-      <div class="input-group-append">
-        <span *ngIf="myForm.get('pregunta')?.invalid && myForm.get('pregunta')?.touched">
-        </span>
-      </div>
-    </div>
-    <!-- Mensajes de error -->
-    <div class="error-message text-danger"
-      *ngIf="myForm.get('pregunta')?.hasError('required') && myForm.get('pregunta')?.touched">
-      <i class="fas fa-exclamation-circle"></i> El campo es obligatorio.
-    </div>
-
-  </div>
-
-  <div class="form-group col-md-6">
-    <!-- RESPUESTA-->
-    <label for="respuesta">Respuesta:</label>
-    <div class="input-group">
-      <input formControlName="respuesta" type="text" class="form-control" id="campoRyyespuesta">
-      <div class="input-group-append">
-        <span class="input-group-text custom-icon-bg"
-          *ngIf="myForm.get('respuesta')?.valid && myForm.get('respuesta')?.touched">
-          <i class="fas fa-check-circle text-success"></i>
-        </span>
-        <span *ngIf="myForm.get('respuesta')?.invalid && myForm.get('respuesta')?.touched">
-        </span>
-      </div>
-    </div>
-
-
-    <!-- MENSAJES DE ERROR -->
-    <div class="error-message text-danger"
-      *ngIf="myForm.get('respuesta')?.hasError('required') && myForm.get('respuesta')?.touched">
-      <i class="fas fa-exclamation-circle"></i>El campo es obligatorio.
-    </div>
-    <div class="error-message text-danger"
-              *ngIf="myForm.get('respuesta')?.hasError('pattern') && myForm.get('respuesta')?.touched">
-              <i class="fas fa-exclamation-circle"></i>La respuesta no debe contener números.
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <!-- PREGUNTA -->
+          <label for="">Pregunta:</label>
+          <div class="input-group">
+            <select formControlName="pregunta" class="form-control" id="campoPregunta" (change)="mostrarSeleccion($event)">
+              <option value="" disabled selected>Selecciona</option>
+              <option value="¿Nombre de tu perro?">¿Nombre de tu perro?</option>
+              <option value="¿Nombre de tu gato?">¿Nombre de tu gato?</option>
+              <option value="¿Videojuego favorito?">¿Videojuego favorito?</option>
+              <option value="¿Comida favorita?">¿Comida favorita?</option>
+            </select>
+            <div class="input-group-append">
+              <span *ngIf="myForm.get('pregunta')?.invalid && myForm.get('pregunta')?.touched">
+              </span>
             </div>
-  </div>
-</div>
+          </div>
+          <!-- Mensajes de error -->
+          <div class="error-message text-danger"
+            *ngIf="myForm.get('pregunta')?.hasError('required') && myForm.get('pregunta')?.touched">
+            <i class="fas fa-exclamation-circle"></i> El campo es obligatorio.
+          </div>
+      
+        </div>
+      
+        <div class="form-group col-md-6">
+          <!-- RESPUESTA-->
+          <label for="respuesta">Respuesta:</label>
+          <div class="input-group">
+            <input formControlName="respuesta" type="text" class="form-control" id="campoRyyespuesta">
+            <div class="input-group-append">
+              <span class="input-group-text custom-icon-bg"
+                *ngIf="myForm.get('respuesta')?.valid && myForm.get('respuesta')?.touched">
+                <i class="fas fa-check-circle text-success"></i>
+              </span>
+              <span *ngIf="myForm.get('respuesta')?.invalid && myForm.get('respuesta')?.touched">
+              </span>
+            </div>
+          </div>
+      
+      
+          <!-- MENSAJES DE ERROR -->
+          <div class="error-message text-danger"
+            *ngIf="myForm.get('respuesta')?.hasError('required') && myForm.get('respuesta')?.touched">
+            <i class="fas fa-exclamation-circle"></i>El campo es obligatorio.
+          </div>
+          <div class="error-message text-danger"
+                    *ngIf="myForm.get('respuesta')?.hasError('pattern') && myForm.get('respuesta')?.touched">
+                    <i class="fas fa-exclamation-circle"></i>La respuesta no debe contener números.
+                  </div>
+        </div>
+      </div>
+      
+
+
 
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -357,22 +356,18 @@
 
       </div>
 
+      <label class="checkboxE">Acepto los términos y condiciones
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+
+      <!-- CAPTCHA -->
+      <ngx-recaptcha2 (success)="activarBtnCapcha($event)" class="captcha" #captchaElem
+        [siteKey]="siteKey"></ngx-recaptcha2>
+      <p class="text-center mb-3">¿Ya tienes una cuenta? 
+        <a href="#" routerLink="/Login">Iniciar sesión</a></p>
+
+      <button [disabled]="activarBtnCrear()" type="submit">Crear cuenta</button>
       
-   
-    
-      
 
-     <!-- CAPTCHA -->
-     <ngx-recaptcha2 (success)="activarBtnCapcha($event)" class="captcha" #captchaElem
-     [siteKey]="siteKey"></ngx-recaptcha2>
-   <p class="text-center mb-3">¿Ya tienes una cuenta? 
-     <a href="#" routerLink="/Login">Iniciar sesión</a></p>
-
-   <button [disabled]="activarBtnCrear()" type="submit">Crear cuenta</button>
-   
-
- </form>
-
-
- 
- 
+    </form>

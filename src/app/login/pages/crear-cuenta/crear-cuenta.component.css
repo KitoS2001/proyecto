@@ -240,6 +240,21 @@ input {
 
 
 
+.navbar {
+  background-color: #1367c2;
+  padding: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar a {
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  
+}
 
 
 
@@ -257,18 +272,14 @@ button:active {
   font-size: 18px;
   margin-top: 10px;
 }
-.navbar {
-  background-color: #1367c2;
-  padding: 18px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
 
-.navbar a {
-  color: white;
-  margin-right: 20px;
-  text-decoration: none;
-  font-size: 20px;
-  
-}
+
+
+
+/*  .logo {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Fondo blanco */

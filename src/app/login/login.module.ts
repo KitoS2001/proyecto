@@ -22,6 +22,7 @@ import { PoliticaCookiesComponent } from './interfaces/politicaCookies/politicaC
 import { AvisoPrivacidadComponent } from './interfaces/avisoPrivacidad/avisoPrivacidad.component';
 import { E404Component } from './interfaces/e404/e404.component';
 
+
 //CAPTCHA//
 import { NgxCaptchaModule } from 'ngx-captcha';
 
@@ -44,7 +45,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     PoliticaCookiesComponent,
     TerminosCondicionesComponent,
     PreguntasComponent,
-    E404Component
+    E404Component,
+    UbicacionComponent
   ],
   imports: [
     CommonModule,

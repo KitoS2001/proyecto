@@ -98,6 +98,13 @@ export class LoginComponent {
 
   activarBtnCapcha(event: string) {
     this.validRecatcha = false;
+    this.loginService.validarUsuario(this.myForm.value).subscribe(res=>{
+      console.log(res)
+      if(res.status === 200)
+        this.router.navigate(['/inicio'])
+      else
+        return console.log(false, "no se pudo iniciar sesion")
+    })
   }
 }
 

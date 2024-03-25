@@ -12,7 +12,7 @@ export class QuienessomosComponent implements OnInit {
 
   constructor(private elementRef: ElementRef) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   handleTouchStart() {

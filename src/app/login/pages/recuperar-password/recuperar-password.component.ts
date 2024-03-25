@@ -57,7 +57,16 @@ export class RecuperarPasswordComponent {
       return null;
     }
   }
-
+  metodoSelect(tipo:number){
+    if(tipo === 1){
+      this.tipo = true
+      this.metodoSeleccionado = true
+    }
+    else{
+      this.tipo = false
+      this.metodoSeleccionado =true
+    }
+  }
   sendCode(event: Event) {
     event.preventDefault(); // Evita que el formulario se envíe automáticamente.
     if (this.myForm.invalid || this.sending) // Verifica si el formulario es inválido o ya se está enviando

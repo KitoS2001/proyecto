@@ -26,3 +26,8 @@ export interface Response{
 export interface Password{
   contrasena:string
 }
+
+export interface responseValid{
+  status:number;
+  message:string;
+}

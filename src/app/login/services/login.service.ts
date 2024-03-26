@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Email, Password, Response, User } from '../interfaces/user.interface';
+import { Email, Password, Response, User, responseValid } from '../interfaces/user.interface';
 import { RespuestaLogin } from '../interfaces/respuestalogin.interface';
 import { DatosEnviados } from '../interfaces/datosenviados.interface';
 
@@ -11,7 +11,7 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  url:string = 'https://proyectoclinicaback-back-production.up.railway.app/'
+  url:string = 'http://localhost:3000/'
 
 
 
@@ -23,6 +23,15 @@ export class LoginService {
   }
   cambiarPassword(newPassword:Password,id:number){
     return this.http.patch<User>(this.url + 'auth/'+id, newPassword)
+  }
+  checkEmail(dataEmail:{email:string}){
+    return this.http.post<responseValid>(this.url + 'recuperar-pass',dataEmail)
+  }
+  checkRespuesta(dataRespuesta:{email:string,respuesta:string}){
+    return this.http.post<{status:number,message:string}>(this.url +'recuperar-pass/check-respuesta',dataRespuesta)
+  }
+  getPregunta(dataEmail:{email:string}){
+    return this.http.post<{status:number,question:string}>(this.url + 'recuperar-pass/check-question',dataEmail);
   }
   sendCode(email:Email){
     return this.http.post<Response>(this.url + 'email',email)

@@ -12,7 +12,7 @@ import { Email, Password } from '../../interfaces/user.interface';
 export class RecuperarPasswordComponent {
   constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) { }
   logosinfondo:string="assets/images/logosinfondo.png"
-  
+
   emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   validStatus:boolean = false;
   validForms:boolean = false;
@@ -24,6 +24,8 @@ export class RecuperarPasswordComponent {
   code!:string;
   id!:number;
   sending: boolean = false; // Variable para controlar el estado de envío
+
+  pregunta!:string;
 
   myForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -61,14 +63,57 @@ export class RecuperarPasswordComponent {
     if(tipo === 1){
       this.tipo = true
       this.metodoSeleccionado = true
+      this.sendCode()
     }
     else{
       this.tipo = false
       this.metodoSeleccionado =true
+      this.checkPregunta()
     }
   }
-  sendCode(event: Event) {
-    event.preventDefault(); // Evita que el formulario se envíe automáticamente.
+
+  checkEmail(){
+    this.loginService.checkEmail({email:this.myForm.controls['email'].value}).subscribe(data =>{
+      if(data.status === 200){
+        console.log("correo encontrado")
+        this.validStatus = true;
+      }
+      else{
+        console.log("no existe el correo")
+      }
+    })
+  }
+
+  checkPregunta(){
+    this.loginService.getPregunta({email:this.myForm.controls['email'].value}).subscribe(data=>{
+      if(data.status === 200){
+        console.log("pregunta encontrada")
+        switch(data.question){
+          case 'perro':
+            this.pregunta = "¿Nombre de tu perro?"
+            break
+          case 'comida':
+            this.pregunta = "¿Nombre de tu comida favorita?"
+            break;
+        }
+      }
+      else{
+        console.log("no existe la pregunta")
+      }
+    })
+  }
+  checkRespuesta(){
+    this.loginService.checkRespuesta({email:this.myForm.controls['email'].value, respuesta:this.preForm.controls['respuesta'].value}).subscribe(data=>{
+      if(data.status === 200){
+        console.log("respuesta encontrada")
+        this.validFormularios = true;
+      }
+      else{
+        console.log("no existe la respuesta")
+      }
+    })
+  }
+  sendCode() {
     if (this.myForm.invalid || this.sending) // Verifica si el formulario es inválido o ya se está enviando
       return;
 
@@ -89,15 +134,16 @@ export class RecuperarPasswordComponent {
   }
 
   validCode(){
-    if(this.codeForm.invalid)
-    return
+    console.log("si entra")
+    if(this.codeForm.invalid)return
     if(this.code === this.codeForm.controls['code'].value){
-      this.validForms = true;
+      console.log("entra codifo")
+      this.validFormularios = true;
     }
   }
 
 
-  
+
 
 
   togglePassword(fieldId: string) {
@@ -109,7 +155,7 @@ export class RecuperarPasswordComponent {
     }
   }
 
-  
+
   updatePassword(){
     if(this.passwordForm.invalid)
       return
